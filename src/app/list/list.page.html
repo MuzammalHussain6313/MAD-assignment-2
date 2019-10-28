@@ -14,14 +14,9 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let item of list">
+    <ion-item *ngFor="let item of chepters">
       <ion-icon slot="start"></ion-icon>
       <p (click)="changeUrl(item)">{{item.id}} - {{item.name}}</p>
     </ion-item>
   </ion-list>
-  <!--
-    <div *ngIf="selectedItem" padding>
-      You navigated here from <b>{{selectedItem.title }}</b>
-    </div>
-  -->
 </ion-content>

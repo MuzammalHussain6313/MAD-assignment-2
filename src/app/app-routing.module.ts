@@ -27,7 +27,8 @@ const routes: Routes = [
   {
     path: 'add-surah',
     loadChildren: './add-surah/add-surah.module#AddSurahPageModule'
-  }
+  },
+  { path: 'setting', loadChildren: './setting/setting.module#SettingPageModule' }
 ];
 
 @NgModule({

@@ -1,20 +1,33 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>addSurah</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="list"></ion-back-button>
+    </ion-buttons>
+    <ion-title>add Surah</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-grid class="ion-padding-top">
+    <div [formGroup]="surahForm">
+      <ion-item>
+        <ion-label position="floating">Surah Name</ion-label>
+        <ion-input formControlName="name"></ion-input>
+      </ion-item>
 
-  <form (ngSubmit)="logForm()">
-    <ion-item>
-      <ion-label>Todo</ion-label>
-      <ion-input type="text" [(ngModel)]="surah.id" name="title"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Description</ion-label>
-      <ion-textarea [(ngModel)]="surah.name" name="description"></ion-textarea>
-    </ion-item>
-    <button ion-button type="submit" block>Add Todo</button>
-  </form>
+      <ion-item>
+        <ion-label>Type</ion-label>
+        <ion-select formControlName="type">
+          <ion-select-option value="makki">Makki</ion-select-option>
+          <ion-select-option value="madni">Madni</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-grid class="ion-padding-top">
+        <ion-row class="ion-justify-content-center">
+          <ion-button (click)="save(surahForm)" shape="round" [disabled]="!surahForm.valid">Save</ion-button>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-grid>
 </ion-content>
