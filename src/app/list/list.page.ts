@@ -13,6 +13,7 @@ import {Observable} from 'rxjs';
 export class ListPage implements OnInit {
   constructor(public navCtrl: NavController, public http: HttpClient) {
     this.data = this.http.get('https://test-node-api-test.herokuapp.com/students/getStudents');
+
     this.data.subscribe(data => {
       this.result = data;
     });
