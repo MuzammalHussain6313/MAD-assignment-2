@@ -14,7 +14,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let item of chepters">
+    <ion-item *ngFor="let item of result">
       <ion-icon slot="start"></ion-icon>
       <p (click)="changeUrl(item)">{{item.student_id}} - {{item.name}} - {{item.email}}</p>
     </ion-item>
