@@ -12,7 +12,8 @@ import {Observable} from 'rxjs';
 })
 export class ListPage implements OnInit {
   constructor(public navCtrl: NavController, public http: HttpClient) {
-    this.data = this.http.get('https://jsonplaceholder.typicode.com/posts');
+    this.data = this.http.get('https://test-node-api-test.herokuapp.com/students/getStudents');
+
     this.data.subscribe(data => {
       this.result = data;
     });
@@ -21,7 +22,7 @@ export class ListPage implements OnInit {
   result: any = [];
   data: Observable<any>;
   clicked() {
-    this.data = this.http.get('https://jsonplaceholder.typicode.com/posts');
+    this.data = this.http.get('https://test-node-api-test.herokuapp.com/students/getStudents');
     this.data.subscribe(data => {
       console.log(data);
     });
