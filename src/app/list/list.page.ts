@@ -45,4 +45,11 @@ export class ListPage implements OnInit {
 //   addSurah() {
 //     this.router.navigate(['add-surah']);
 //   }
+  changeUrl(item: any) {
+
+  }
+
+  addSurah() {
+
+  }
 }
