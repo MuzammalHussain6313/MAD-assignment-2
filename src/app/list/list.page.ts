@@ -11,12 +11,14 @@ import {Observable} from 'rxjs';
   styleUrls: ['list.page.scss']
 })
 export class ListPage implements OnInit {
-  constructor(public navCtrl: NavController, public http: HttpClient) {
+  constructor(public router: Router, public navCtrl: NavController, public http: HttpClient) {
     this.data = this.http.get('https://test-node-api-test.herokuapp.com/students/getStudents');
 
+    console.log('data' + this.data);
     this.data.subscribe(data => {
       this.result = data;
     });
+    console.log('result' + this.result);
   }
 
   result: any = [];
@@ -30,27 +32,17 @@ export class ListPage implements OnInit {
 
   ngOnInit(): void {
   }
-//   private selectedItem: any;
-//   constructor(private router: Router, private listService: ListService) {
-//   }
-//   chepters = [];
-//   ngOnInit() {
-//     this.chepters = this.listService.getSUrahList();
-//   }
-//   changeUrl(item: any) {
-//     const id = item.id.substring(0, 3);
-//     const url = `list/${id}`;
-//     this.router.navigateByUrl(url);
-// }
-//
-//   addSurah() {
-//     this.router.navigate(['add-surah']);
-//   }
   changeUrl(item: any) {
 
   }
 
   addSurah() {
+    this.router.navigate(['signup']);
+  }
 
+  showSingleItem(item: any) {
+    const id = item.student_id.substring(0, 3);
+    const url = `list/${id}`;
+    this.router.navigateByUrl(url);
   }
 }

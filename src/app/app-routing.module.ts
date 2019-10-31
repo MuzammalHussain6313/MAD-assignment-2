@@ -25,6 +25,10 @@ const routes: Routes = [
       ]
   },
   {
+    path: 'signup',
+    loadChildren: './signup/signup.module#SignupPageModule'
+  },
+  {
     path: 'add-surah',
     loadChildren: './add-surah/add-surah.module#AddSurahPageModule'
   },

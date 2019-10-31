@@ -18,16 +18,16 @@ export class DetailPage implements OnInit {
   chepters = [];
   singleChepter;
   ngOnInit() {
-    this.chepters = this.listService.getSUrahList();
+    //this.chepters = this.listService.getSUrahList();
     // this.students = this.studentsListService.getAllStudents();
 
-    this.route.paramMap.subscribe(paramMap => {
-      const val = paramMap.get('id');
-
-      this.singleChepter = this.chepters.find(obj => {
-        return obj.id.includes(val);
-      });
-    });
+    // this.route.paramMap.subscribe(paramMap => {
+    //   const val = paramMap.get('id');
+    //
+    //   this.singleChepter = this.chepters.find(obj => {
+    //     return obj.id.includes(val);
+    //   });
+    // });
   }
 
 }

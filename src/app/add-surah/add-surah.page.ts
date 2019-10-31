@@ -1,32 +1,46 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ListService} from '../list.service';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Component({
-  selector: 'app-add-surah',
-  templateUrl: './add-surah.page.html',
-  styleUrls: ['./add-surah.page.scss'],
+    selector: 'app-add-surah',
+    templateUrl: './add-surah.page.html',
+    styleUrls: ['./add-surah.page.scss'],
 })
 export class AddSurahPage implements OnInit {
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private list: ListService) { }
-  surahForm: FormGroup;
-  ngOnInit() {
-    this.surahForm = this.formBuilder.group({
-        id : ['id001'],
-      name: [null, [Validators.required]],
-      type: ['makki', [Validators.required]]
-    });
-  }
-    logForm() {
-
+    postData: any = [
+        { name: 'ali', email: 'test-email.com', student_id: '010' }
+    ]
+    constructor(private router: Router,
+                private formBuilder: FormBuilder,
+                private list: ListService,
+                public httpClient: HttpClient,
+                public http: HttpClient,
+    ) {
     }
 
-  save(form: any) {
-      //this.surahForm.push(id: 'newId');
-      console.log('from in add' + form);
-      this.list.addSurah(this.surahForm);
-      this.router.navigate(['/list']);
-  }
+    signupForm: FormGroup;
+    surahForm: FormGroup;
+
+    public save(signupForm: object): Observable<any> {
+        console.log('formData' + signupForm);
+        return this.http.post('https://test-node-api-test.herokuapp.com/students/newStudent', signupForm);
+        this.router.navigate(['list']);
+    }
+
+    ngOnInit() {
+        this.formInitializer();
+    }
+
+    formInitializer() {
+        this.signupForm = this.formBuilder.group({
+            name: [null, [Validators.required]],
+            email: [null, [Validators.required, Validators.email]],
+            student_id: [null, [Validators.required]]
+        });
+    }
 }
