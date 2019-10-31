@@ -1,9 +1,8 @@
-
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {Observable} from 'rxjs';
-import {Router} from '@angular/router';
-import {HttpClient} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +12,11 @@ import {HttpClient} from '@angular/common/http';
 export class SignupPage implements OnInit {
   signupForm: FormGroup;
 
-  constructor(private router: Router, private http: HttpClient, private formBuilder: FormBuilder) {}
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private formBuilder: FormBuilder
+  ) {}
 
   ngOnInit() {
     this.formInitializer();
@@ -23,15 +26,30 @@ export class SignupPage implements OnInit {
     this.signupForm = this.formBuilder.group({
       name: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
-      address: [null, [Validators.required]],
-      gender: ['m', [Validators.required]]
+      student_id: [null, [Validators.required]]
     });
   }
 
-  public save(signupForm: object): Observable<any> {
-    console.log('formData' + this.signupForm);
-    //this.router.navigate(['list']);
-    return this.http.post('https://test-node-api-test.herokuapp.com/students/newStudent', this.signupForm);
-    console.log('after call' + this.signupForm);
+  save() {
+    if (this.signupForm.valid) {
+      console.log('formData', this.signupForm.value);
+
+      const formData = this.signupForm.value;
+      this.saveHttpReq(formData).subscribe(
+        data => {
+          console.log('I got this response -> ', data);
+          this.router.navigate(['list']);
+        },
+        error => {
+          console.log('error', error);
+        }
+      );
+    }
+  }
+
+  saveHttpReq(dataObj): Observable<any> {
+    // const url = 'http://test-node-api-test.herokuapp.com/students/newStudent'; // Thos link is working coorectly.
+    const url = 'http://localhost:36313/students/newStudent';
+    return this.http.post(url, dataObj);
   }
 }

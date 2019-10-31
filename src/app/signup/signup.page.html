@@ -23,24 +23,15 @@
       </ion-item>
       <ion-item>
 
-        <ion-label position="floating">Address</ion-label>
-        <ion-textarea formControlName="address"></ion-textarea>
+        <ion-label position="floating">id</ion-label>
+        <ion-textarea formControlName="student_id"></ion-textarea>
       </ion-item>
-
-      <ion-item>
-        <ion-label>Gender</ion-label>
-        <ion-select formControlName="gender" placeholder="Select One">
-          <ion-select-option value="f">Female</ion-select-option>
-          <ion-select-option value="m">Male</ion-select-option>
-        </ion-select>
-      </ion-item>
-
 
 
       <ion-grid class="ion-padding-top">
         <ion-row class="ion-justify-content-center">
 
-          <ion-button (click)="save(signupForm)" shape="round" [disabled]="!signupForm.valid">Save</ion-button>
+          <ion-button (click)="save()" shape="round" [disabled]="!signupForm.valid">Save</ion-button>
         </ion-row>
       </ion-grid>
 

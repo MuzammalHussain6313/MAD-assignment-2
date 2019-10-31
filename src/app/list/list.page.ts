@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ListService} from '../list.service';
-import {Router} from '@angular/router';
-import {NavController} from '@ionic/angular';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { ListService } from '../list.service';
+import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-list',
@@ -11,8 +11,8 @@ import {Observable} from 'rxjs';
   styleUrls: ['list.page.scss']
 })
 export class ListPage implements OnInit {
-  constructor(public router: Router, public navCtrl: NavController, public http: HttpClient) {
-    this.data = this.http.get('https://test-node-api-test.herokuapp.com/students/getStudents');
+  constructor(public router: Router, public http: HttpClient) {
+    this.data = this.http.get('http://localhost:36313/students/getStudents');
 
     console.log('data' + this.data);
     this.data.subscribe(data => {
@@ -23,17 +23,7 @@ export class ListPage implements OnInit {
 
   result: any = [];
   data: Observable<any>;
-  clicked() {
-    this.data = this.http.get('https://test-node-api-test.herokuapp.com/students/getStudents');
-    this.data.subscribe(data => {
-      console.log(data);
-    });
-  }
-
   ngOnInit(): void {
-  }
-  changeUrl(item: any) {
-
   }
 
   addSurah() {
@@ -41,8 +31,9 @@ export class ListPage implements OnInit {
   }
 
   showSingleItem(item: any) {
-    const id = item.student_id.substring(0, 3);
+    const id = item.student_id;
     const url = `list/${id}`;
+    console.log(url);
     this.router.navigateByUrl(url);
   }
 }
