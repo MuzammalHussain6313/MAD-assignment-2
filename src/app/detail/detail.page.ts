@@ -18,7 +18,6 @@ export class DetailPage implements OnInit {
     }
 
     studentList: any;
-    // data: Observable<any>;
     singleStudent;
 
     ngOnInit() {
@@ -35,13 +34,28 @@ export class DetailPage implements OnInit {
 
     deleteStudent() {
         console.log('formData ' + this.singleStudent._id);
-        this.callAPI(this.singleStudent);
+        this.callAPI(this.singleStudent).subscribe(
+            data => {
+                console.log('I got this response -> ', data);
+                this.router.navigate(['list']);
+            },
+            error => {
+                console.log('error', error);
+            }
+        );
         this.router.navigate(['list']);
     }
 
-    callAPI(student: any): Observable<any> {
+    callAPI(student): Observable<any> {
       console.log('id : ' + student._id);
-      const url = 'http://localhost:36313/deleteStudent';
-      return this.http.delete(url, student);
+      const link = 'http://localhost:36313/students/deleteStudent';
+      return this.http.post(link, student);
+    }
+
+    updateItem() {
+        const id = this.singleStudent.student_id;
+        const url = `update/${id}`;
+        console.log(url);
+        this.router.navigateByUrl(url);
     }
 }

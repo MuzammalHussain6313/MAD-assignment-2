@@ -13,8 +13,6 @@ import { Observable } from 'rxjs';
 export class ListPage implements OnInit {
   constructor(public router: Router, public http: HttpClient) {
     this.data = this.http.get('http://localhost:36313/students/getStudents');
-
-    console.log('data' + this.data);
     this.data.subscribe(data => {
       this.result = data;
     });
@@ -36,4 +34,11 @@ export class ListPage implements OnInit {
     console.log(url);
     this.router.navigateByUrl(url);
   }
+
+  // updateItem(item: any) {
+  //   const id = item.student_id;
+  //   const url = `list/${id}`;
+  //   console.log(url);
+  //   this.router.navigateByUrl(url);
+  // }
 }

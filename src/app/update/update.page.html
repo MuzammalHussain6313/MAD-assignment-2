@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+      <!-- <ion-menu-button></ion-menu-button> -->
+    </ion-buttons>
+    <ion-title>Update</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-padding-top">
+    <ion-text>Update field</ion-text>
+    <div [formGroup]="signupForm">
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+
+        <ion-label position="floating">Email</ion-label>
+        <ion-input formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+
+        <ion-label position="floating">id</ion-label>
+        <ion-textarea formControlName="student_id"></ion-textarea>
+      </ion-item>
+
+
+      <ion-grid class="ion-padding-top">
+        <ion-row class="ion-justify-content-center">
+
+          <ion-button (click)="updateData()" shape="round" [disabled]="!signupForm.valid">Save</ion-button>
+        </ion-row>
+      </ion-grid>
+
+    </div>
+  </ion-grid>
+</ion-content>

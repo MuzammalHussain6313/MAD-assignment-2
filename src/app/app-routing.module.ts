@@ -32,7 +32,20 @@ const routes: Routes = [
     path: 'add-surah',
     loadChildren: './add-surah/add-surah.module#AddSurahPageModule'
   },
-  { path: 'setting', loadChildren: './setting/setting.module#SettingPageModule' }
+  { path: 'setting', loadChildren: './setting/setting.module#SettingPageModule' },
+  {
+    path: 'update',
+    children: [
+      {
+        path: '',
+        loadChildren: './update/update.module#UpdatePageModule'
+      },
+      {
+        path: ':id',
+        loadChildren: './update/update.module#UpdatePageModule'
+      }
+    ]
+  }
 ];
 
 @NgModule({
