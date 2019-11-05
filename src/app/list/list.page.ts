@@ -41,4 +41,7 @@ export class ListPage implements OnInit {
   //   console.log(url);
   //   this.router.navigateByUrl(url);
   // }
+  moreCommands() {
+    alert('that is more button');
+  }
 }

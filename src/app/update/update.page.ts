@@ -20,22 +20,23 @@ export class UpdatePage implements OnInit {
 
   ngOnInit() {
     this.http.get('http://localhost:36313/students/getStudents').subscribe(res => {
-      this.studentList = res;
-      this.route.paramMap.subscribe(paramMap => {
-        const val = paramMap.get('id');
-        this.singleStudent = this.studentList.find(obj => {
-          return obj.student_id.includes(val);
+            this.studentList = res;
+            this.route.paramMap.subscribe(paramMap => {
+                const val = paramMap.get('id');
+                this.singleStudent = this.studentList.find(obj => {
+                    return obj.student_id.includes(val);
+                });
+                this.formInitializer();
+            });
         });
-      });
-    });
-    this.formInitializer();
   }
 
   formInitializer() {
+    console.log('fi', this.singleStudent.student_id);
     this.signupForm = this.formBuilder.group({
-      name: [null, [Validators.required]],
-      email: [null, [Validators.required, Validators.email]],
-      student_id: [null, [Validators.required]]
+      name: [this.singleStudent.name, [Validators.required]],
+      email: [this.singleStudent.email, [Validators.required, Validators.email]],
+      student_id: [this.singleStudent.student_id, [Validators.required]]
     });
   }
 
