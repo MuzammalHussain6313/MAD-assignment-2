@@ -21,14 +21,8 @@
       <ion-card-title>Welcome to: {{singleStudent?.name}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <p>{{singleStudent?.email}} and database id is {{singleStudent?._id}} Now that your app has been created, you'll want to start building out features and
+      <p>{{singleStudent?.email}} and database id is {{singleStudent?._id}} <br> Now that your app has been created, you'll want to start building out features and
         components. Check out some of the resources below for next steps.</p>
     </ion-card-content>
   </ion-card>
-  <ion-list>
-    <ion-item *ngFor="let item of studentList">
-      <ion-icon slot="start"></ion-icon>
-      <p>{{item.student_id}} - {{item.name}} - {{item.email}}</p>
-    </ion-item>
-  </ion-list>
 </ion-content>

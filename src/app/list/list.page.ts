@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { PopoverController } from '@ionic/angular';
+import {PopoverComponent} from '../popover/popover.component';
 
 @Component({
   selector: 'app-list',
@@ -11,7 +13,9 @@ import { Observable } from 'rxjs';
   styleUrls: ['list.page.scss']
 })
 export class ListPage implements OnInit {
-  constructor(public router: Router, public http: HttpClient) {
+  constructor(public router: Router,
+              public http: HttpClient,
+              public popoverController: PopoverController) {
     this.data = this.http.get('http://localhost:36313/students/getStudents');
     this.data.subscribe(data => {
       this.result = data;
@@ -41,7 +45,11 @@ export class ListPage implements OnInit {
   //   console.log(url);
   //   this.router.navigateByUrl(url);
   // }
-  moreCommands() {
-    alert('that is more button');
+  async presentPopover(myEvent, item: any) {
+    const popover = await this.popoverController.create({
+      component: PopoverComponent,
+      componentProps: {student_id: item._id }
+    });
+    return await popover.present();
   }
 }
