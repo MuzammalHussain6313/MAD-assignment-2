@@ -1,14 +1,16 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="list"></ion-back-button>
+      <ion-back-button></ion-back-button>
+      <!-- <ion-menu-button></ion-menu-button> -->
     </ion-buttons>
-    <ion-title>add Surah</ion-title>
+    <ion-title>sign up</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-grid class="ion-padding-top">
+    <ion-text> Please fill up the information</ion-text>
     <div [formGroup]="signupForm">
       <ion-item>
         <ion-label position="floating">Name</ion-label>
@@ -21,14 +23,15 @@
       </ion-item>
       <ion-item>
 
-        <ion-label position="floating">student id</ion-label>
+        <ion-label position="floating">id</ion-label>
         <ion-textarea formControlName="student_id"></ion-textarea>
       </ion-item>
+
 
       <ion-grid class="ion-padding-top">
         <ion-row class="ion-justify-content-center">
 
-          <ion-button (click)="save(signupForm)" shape="round" [disabled]="!signupForm.valid">Save</ion-button>
+          <ion-button (click)="save()" shape="round" [disabled]="!signupForm.valid">Save</ion-button>
         </ion-row>
       </ion-grid>
 
