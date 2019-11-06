@@ -12,10 +12,6 @@ import {HttpClient} from '@angular/common/http';
 })
 export class PopoverComponent implements OnInit {
 
-  public list = [
-    {name: 'Update', icon: 'create'},
-    { name: 'Delete', icon: 'trash'}
-];
   constructor(private popoverController: PopoverController,
               private navParams: NavParams,
               private router: Router,
@@ -26,7 +22,7 @@ export class PopoverComponent implements OnInit {
   singleStudent;
   ngOnInit() {
     this.id = this.navParams.data.student_id;
-    this.http.get('http://localhost:36313/students/getStudents').subscribe(res => {
+    this.http.get('https://test-node-api-test.herokuapp.com/students/getStudents').subscribe(res => {
       this.studentList = res;
       this.route.paramMap.subscribe(paramMap => {
         this.singleStudent = this.studentList.find(obj => {
@@ -52,7 +48,7 @@ export class PopoverComponent implements OnInit {
   }
 
   callAPI(student): Observable<any> {
-    const url = `http://localhost:36313/students/${this.singleStudent._id}`;
+    const url = `https://test-node-api-test.herokuapp.com/students/${this.singleStudent._id}`;
     console.log('link', url);
     return this.http.delete(url);
     // console.log('id : ' + student._id);

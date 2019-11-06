@@ -3,10 +3,6 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="list"></ion-back-button>
     </ion-buttons>
-    <ion-title>detail</ion-title>
-    <ion-button slot="end" (click)="updateItem()">
-     update
-    </ion-button>
     <ion-button slot="end" (click)="deleteStudent()">
       <ion-icon name="trash"></ion-icon>
     </ion-button>
@@ -15,7 +11,7 @@
 
 <ion-content>
   <ion-card class="welcome-card">
-    <img src="/assets/quran-majeed.jpg" alt="" />
+<!--    <img src="/assets/quran-majeed.jpg" alt="" />-->
     <ion-card-header>
       <ion-card-subtitle>{{singleStudent?.student_id}}</ion-card-subtitle>
       <ion-card-title>Welcome to: {{singleStudent?.name}}</ion-card-title>

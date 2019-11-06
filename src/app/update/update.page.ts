@@ -23,7 +23,7 @@ export class UpdatePage implements OnInit {
       this.formInitializer();
 
       this.http
-          .get('http://localhost:36313/students/getStudents')
+          .get('https://test-node-api-test.herokuapp.com/students/getStudents')
           .subscribe(res => {
               this.studentList = res;
               this.route.paramMap.subscribe(paramMap => {
@@ -65,7 +65,7 @@ export class UpdatePage implements OnInit {
 
     saveHttpReq(dataObj): Observable<any> {
         // const url = 'http://test-node-api-test.herokuapp.com/students/newStudent'; // Thos link is working coorectly.
-        const url = `http://localhost:36313/students/${this.singleStudent._id}`;
+        const url = `https://test-node-api-test.herokuapp.com/students/${this.singleStudent._id}`;
         console.log('link', url);
         return this.http.patch(url, dataObj);
     }
