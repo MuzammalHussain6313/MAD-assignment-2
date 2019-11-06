@@ -21,7 +21,7 @@ export class DetailPage implements OnInit {
     singleStudent;
 
     ngOnInit() {
-        this.http.get('http://localhost:36313/students/getStudents').subscribe(res => {
+        this.http.get('https://test-node-api-test.herokuapp.com/students/getStudents').subscribe(res => {
             this.studentList = res;
             this.route.paramMap.subscribe(paramMap => {
                 const val = paramMap.get('id');
@@ -47,9 +47,9 @@ export class DetailPage implements OnInit {
     }
 
     callAPI(student): Observable<any> {
-      console.log('id : ' + student._id);
-      const link = 'http://localhost:36313/students/deleteStudent';
-      return this.http.post(link, student);
+        const url = `https://test-node-api-test.herokuapp.com/students/${this.singleStudent._id}`;
+        console.log('link', url);
+        return this.http.delete(url);
     }
 
     updateItem() {

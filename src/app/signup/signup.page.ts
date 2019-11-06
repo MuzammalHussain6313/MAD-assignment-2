@@ -48,8 +48,8 @@ export class SignupPage implements OnInit {
   }
 
   saveHttpReq(dataObj): Observable<any> {
-    // const url = 'http://test-node-api-test.herokuapp.com/students/newStudent'; // Thos link is working coorectly.
-    const url = 'http://localhost:36313/students/newStudent';
+    // const url = 'http://test-node-api-test.herokuapp.com/students/newStudent'; // This link is working coorectly.
+    const url = 'https://test-node-api-test.herokuapp.com/students/newStudent';
     return this.http.post(url, dataObj);
   }
 }

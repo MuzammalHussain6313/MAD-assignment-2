@@ -17,7 +17,7 @@
     <ion-item *ngFor="let item of result" detail-push>
       <ion-icon slot="start" name="person"></ion-icon>
       <p (click)="showSingleItem(item)">{{item.student_id}} - {{item.name}}</p>
-      <ion-icon (click)="moreCommands()" name="more" slot="end"></ion-icon>
+      <ion-icon (click)="presentPopover($event, item)" name="more" slot="end"></ion-icon>
     </ion-item>
   </ion-list>
 </ion-content>
